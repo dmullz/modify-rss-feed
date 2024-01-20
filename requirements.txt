@@ -1,4 +1,1 @@
-datetime
-hashlib
-time
-cloudant
+ibmcloudant
