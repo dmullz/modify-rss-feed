@@ -228,4 +228,10 @@ def main(_param_dictionary):
     }
     result = switch_map[_param_dictionary['action']](database, _param_dictionary)
 
-    return result
+    return {
+          "headers": {
+              "Content-Type": "application/json",
+          },
+		  "statusCode": 200,
+          "body": result,
+      }
