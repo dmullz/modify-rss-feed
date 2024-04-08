@@ -60,6 +60,10 @@ def add_new_rss_feed(_database, _param_dictionary):
         "Threshold": _param_dictionary['threshold'],
         "Magazine": _param_dictionary['magazine']
     }
+    if "language_feed" in _param_dictionary:
+        new_feed_object["Language"] = _param_dictionary["language_feed"]
+    if "pause_ingestion" in _param_dictionary:
+        new_feed_object["Pause_Ingestion"] = _param_dictionary["pause_ingestion"]
 
     #If application supplied a collection_id, then we will add the feed to the existing document,
     #Else, we will create a new document and add the feed there instead.
@@ -152,6 +156,10 @@ def update_rss_feed(_database, _param_dictionary):
                 "Threshold": _param_dictionary['threshold'],
                 "Magazine": _param_dictionary['magazine']
             }
+            if "language_feed" in _param_dictionary:
+                new_feed_object["Language"] = _param_dictionary["language_feed"]
+            if "pause_ingestion" in _param_dictionary:
+                new_feed_object["Pause_Ingestion"] = _param_dictionary["pause_ingestion"]
             old_rss_feed_name = ""
             with cloudant.document.Document(_database, doc_id) as document:
                 document['RSS_Feeds'].append(new_feed_object)
@@ -232,6 +240,6 @@ def main(_param_dictionary):
           "headers": {
               "Content-Type": "application/json",
           },
-		  "statusCode": 200,
+          "statusCode": 200,
           "body": result,
       }
