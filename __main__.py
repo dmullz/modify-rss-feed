@@ -200,6 +200,8 @@ def update_rss_feed(_database, _param_dictionary):
                     document['RSS_Feeds'][document['RSS_Feeds'].index(doc_map)]['RSS_Feed_URL'] = _param_dictionary['rss_feed_url']
                     document['RSS_Feeds'][document['RSS_Feeds'].index(doc_map)]['Threshold'] = _param_dictionary['threshold']
                     document['RSS_Feeds'][document['RSS_Feeds'].index(doc_map)]['Magazine'] = _param_dictionary['magazine']
+                    document['RSS_Feeds'][document['RSS_Feeds'].index(doc_map)]['Language'] = _param_dictionary['language_feed']
+                    document['RSS_Feeds'][document['RSS_Feeds'].index(doc_map)]['Pause_Ingestion'] = _param_dictionary['pause_ingestion']
         # Rename the no_pubdate doc if the RSS feed name has changed and transport the data
         if old_rss_feed_name and (old_rss_feed_name + '_no_pubdates' in _database):
             update_no_pubdate_docs(_database, old_rss_feed_name, _param_dictionary['rss_feed_name'])
